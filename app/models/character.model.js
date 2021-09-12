@@ -1,32 +1,41 @@
 module.exports = (sequelize, Sequelize) => {
     const Character = sequelize.define("Character", {
-        name: {
+        Name: {
             type: Sequelize.STRING,
             allowNull: false
         },
-        age: {
+        Age: {
             type: Sequelize.INT,
             allowNull: false
         },
-        align: {
+        Sex: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        Alignment: {
+            type: Sequelize.ENUM,
+            values: [
+                'Lawful Good', 'Neutral Good', 'Chaotic Good',
+                'Lawful Neutral', 'Neutral', 'Chaotic Neutral',
+                'Lawful Evil', 'Neutral Evil', 'Chaotic Evil'
+            ],
+            allowNull: true
+        },
+        Height: {
             type: Sequelize.STRING,
             allowNull: true
         },
-        height: {
+        Weight: {
             type: Sequelize.STRING,
             allowNull: true
         },
-        weight: {
-            type: Sequelize.STRING,
-            allowNull: true
-        },
-        background: {
+        Background: {
             type: Sequelize.STRING,
             defaultValue: 'N/A'
         },
-        fnt: {
+        FeaturesAndTraits: {
             type: Sequelize.TEXT('long'),
-            allowNull: true
+            defaultValue: 'N/A'
         }
     });
 
@@ -34,10 +43,7 @@ module.exports = (sequelize, Sequelize) => {
         Character.hasOne(models.Stats, {
             onDelete: "cascade"
         });
-        Character.hasOne(models.Race, {});
-        Character.hasMany(models.SubRace, {});
-        Character.hasMany(models.Language, {});
-        Character.BelongsTo(models.User, {
+        Character.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
