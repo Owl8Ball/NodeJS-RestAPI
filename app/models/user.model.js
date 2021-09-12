@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("user", {
+  const User = sequelize.define("user", {
       username: {
         type: Sequelize.STRING,
         allowNull: false
@@ -23,6 +23,10 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: "Active"
       }
     });
-  
+
+    User.hasMany(models.Character, {
+      onDelete: "cascade"
+    });
+    
     return User;
-  };
+};
