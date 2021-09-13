@@ -1,0 +1,59 @@
+abilities (stats)
+
+Get ability scores:
+4x6 sided dice. Add 3 highest scores. <- (do it 6 times total to assign to all the stats)
+
+Get ability modifiers:
+round(((abl score) - 10)/2) (get modifier. round down)
+
+Model Structure:
+
+User
+	- Character 		(Can have many characters)
+
+Campaign
+	- Character 		(Can have many characters)
+
+Character
+	- Gear 				(Can have many types of gear)
+	- Inventory			(Can have many items)
+	- Languages			(Can speak multiple languages)
+	- Race 				(Can only have one race)
+	- SubRaces			(Can have many subraces)
+	- Stats				(Can have one stat sheet)
+	- Campaign			(Can have many campaigns)
+	- Attacks/Skills	(Can have multiple skills)
+
+Gear
+	- Modifiers			(Can have many modifiers?) <- Check
+
+-------------------------------------------------------------------
+
+Table Structure:
+
+Attacks
+	- Name
+	- Effect
+	- Range
+	- Damage Type
+	- Level
+	- Description
+
+Gear
+	- Name
+	- Type
+
+Inventory
+	- Name
+	- Type
+	- Amount
+
+Language
+	- Name
+	- SpokenBy
+	- Script
+
+Races
+	- Name
+	- HeightModifier
+	- WeightModifier
