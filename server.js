@@ -22,7 +22,7 @@ db.sequelize.sync({ force: true }).then(() => {
     console.log("Tables dropped. DB re-synced.");
 });
 
-require("./app/routes/user.routes")(app);
+require("./app/routes/api.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
